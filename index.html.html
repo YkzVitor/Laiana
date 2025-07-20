@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Eu te amo</title>
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        body {{
+            background: url('foto.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }}
+        .mensagem {{
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px black;
+        }}
+        .contador {{
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 6px black;
+        }}
+        .letreiro {{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }}
+        .texto-movel {{
+            position: absolute;
+            width: 100%;
+            font-size: 3em;
+            color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            white-space: nowrap;
+            animation: mover 10s linear infinite alternate;
+        }}
+        @keyframes mover {{
+            0% {{ top: -100%; }}
+            100% {{ top: 100%; }}
+        }}
+    </style>
+</head>
+<body>
+    <div class="mensagem">Eu te amo ❤ há 1 mês e 28 dias</div>
+    <div class="letreiro">
+        <div class="texto-movel">eu te amo · eu te amo · eu te amo · eu te amo · eu te amo · eu te amo · eu te amo ·</div>
+    </div>
+    <div class="contador" id="contador">Carregando...</div>
+
+    <script>
+        const inicio = new Date("2025-05-23T00:00:00");
+
+        function atualizarContador() {{
+            const agora = new Date();
+            const diff = Math.floor((agora - inicio) / 1000);
+            const minutos = Math.floor(diff / 60);
+            const segundos = diff % 60;
+            document.getElementById("contador").textContent =
+                `Juntos há ${{
+                    minutos
+                }} minutos e ${{
+                    segundos
+                }} segundos`;
+        }}
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
